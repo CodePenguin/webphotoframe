@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import PhotoComponent from "@/components/PhotoComponent.vue";
+import { useConfigStore } from "@/stores/ConfigStore";
 import { onMounted, onUnmounted, ref } from "vue";
 
-const url = ref("hummingbird.jpg");
+const config = useConfigStore();
+
+let index = 0;
+const photo = config.photos[index];
+const url = ref(photo.url);
 
 function switchPhoto() {
-  url.value =
-    url.value === "hummingbird.jpg" ? "plates.jpg" : "hummingbird.jpg";
+  index = index + 1 < config.photos.length ? index + 1 : 0;
+  const photo = config.photos[index];
+  url.value = photo.url;
 }
 
 let timerId = 0;
