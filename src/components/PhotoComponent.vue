@@ -10,8 +10,6 @@ const photoUrl = ref(props.url);
 const transitionPhoto = ref<HTMLImageElement>();
 const transitionPhotoUrl = ref(props.url);
 
-console.log(props.url);
-
 watch(
   () => props.url,
   (newValue, oldValue) => {
