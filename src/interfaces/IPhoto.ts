@@ -1,3 +1,3 @@
 export default interface IPhoto {
-    url: string
+  url: string;
 }

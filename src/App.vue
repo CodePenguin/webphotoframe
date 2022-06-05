@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import Loading from "./components/Loading.vue";
+import LoadingComponent from "./components/LoadingComponent.vue";
 import { useConfigStore } from "./stores/ConfigStore";
 
 const config = useConfigStore();
@@ -8,7 +8,7 @@ config.load();
 </script>
 
 <template>
-  <Loading v-if="!config.loaded" />
+  <LoadingComponent v-if="!config.loaded" />
   <RouterView v-if="config.loaded" />
 </template>
 
