@@ -26,6 +26,7 @@ watch(
       transitionPhoto.value?.classList.remove("opacity-0");
       transitionPhoto.value?.classList.add("opacity-100");
     }
+    console.log("PhotoURL", photoUrl.value);
   }
 );
 </script>
@@ -44,5 +45,10 @@ watch(
       alt="Transition Photo"
       class="absolute top-0 left-0 object-cover w-full h-full transition-opacity duration-3000 ease-in-out opacity-0"
     />
+    <div
+      class="absolute w-full py-2.5 bottom-0 inset-x-0 text-white text-xs text-center"
+    >
+      {{ url }}
+    </div>
   </div>
 </template>
