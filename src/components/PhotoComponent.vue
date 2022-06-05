@@ -26,7 +26,6 @@ watch(
       transitionPhoto.value?.classList.remove("opacity-0");
       transitionPhoto.value?.classList.add("opacity-100");
     }
-    console.log("PhotoURL", photoUrl.value);
   }
 );
 </script>

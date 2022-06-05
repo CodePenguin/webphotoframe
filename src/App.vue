@@ -11,7 +11,3 @@ config.load();
   <LoadingComponent v-if="!config.loaded" />
   <RouterView v-if="config.loaded" />
 </template>
-
-<style>
-@import "@/assets/base.css";
-</style>
