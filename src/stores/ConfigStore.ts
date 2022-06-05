@@ -1,4 +1,7 @@
+import axios from "axios";
+import type { AxiosError, AxiosResponse } from "axios";
 import { defineStore } from "pinia";
+import type IConfig from "@/interfaces/IConfig";
 import type IPhoto from "@/interfaces/IPhoto";
 
 export type ConfigModel = {
@@ -14,6 +17,20 @@ export const useConfigStore = defineStore({
   } as ConfigModel),
   getters: {},
   actions: {
+    load() {
+      axios
+      .get("photoframe.config.json")
+      .then((response: AxiosResponse) => {
+        const data: IConfig = response.data;
+        this.updatePhotos(data.photos)
+        this.setLoaded(true);
+      })
+      .catch((error: AxiosError) => {
+        if (error.response?.status != 404) {
+          console.log("Error retrieving configuration", error);
+        }
+      });
+    },
     setLoaded(value: boolean) {
       this.loaded = value;
     },
