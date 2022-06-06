@@ -29,7 +29,7 @@ watch(
 </script>
 
 <template>
-  <div class="relative w-full h-full overflow-hidden">
+  <div class="relative w-screen h-screen overflow-hidden">
     <img :src="photoUrl" ref="photo" alt="Photo" class="object-cover w-full h-full" />
     <img
       :src="transitionPhotoUrl"
