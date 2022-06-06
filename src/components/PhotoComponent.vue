@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue'
 
 const props = defineProps<{
+  caption: string,
   url: string
 }>()
 
@@ -29,16 +30,20 @@ watch(
 </script>
 
 <template>
-  <div class="relative w-screen h-screen overflow-hidden">
-    <img :src="photoUrl" ref="photo" alt="Photo" class="object-cover w-full h-full" />
-    <img
-      :src="transitionPhotoUrl"
-      ref="transitionPhoto"
-      alt="Transition Photo"
-      class="absolute top-0 left-0 object-cover w-full h-full transition-opacity duration-3000 ease-in-out opacity-0"
-    />
-    <div class="absolute w-full py-2.5 bottom-0 inset-x-0 text-white text-xs text-center">
-      {{ url }}
-    </div>
+  <img :src="photoUrl" ref="photo" alt="Photo" class="object-cover w-full h-full" />
+  <img
+    :src="transitionPhotoUrl"
+    ref="transitionPhoto"
+    alt="Transition Photo"
+    class="absolute top-0 left-0 object-cover w-full h-full transition-opacity duration-3000 ease-in-out opacity-0"
+  />
+  <div v-if="caption" class="photo-caption absolute w-full py-2.5 bottom-0 inset-x-0 text-white text-xs text-center">
+    {{ caption }}
   </div>
 </template>
+
+<style scoped>
+.photo-caption {
+  text-shadow: 0 2px 2px #000000
+}
+</style>

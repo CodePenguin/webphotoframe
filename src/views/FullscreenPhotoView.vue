@@ -8,6 +8,7 @@ const { photoSwitchIntervalSeconds, photos } = storeToRefs(useConfigStore())
 
 let index = 0
 const photo = photos.value[index]
+const caption = ref(photo.caption)
 const url = ref(photo.url)
 
 let timerId = 0
@@ -19,6 +20,7 @@ function setPhotoSwitchChangeInterval() {
 function switchPhoto() {
   index = index + 1 < photos.value.length ? index + 1 : 0
   const photo = photos.value[index]
+  caption.value = photo.caption
   url.value = photo.url
 }
 
@@ -29,6 +31,8 @@ watch([photoSwitchIntervalSeconds], () => setPhotoSwitchChangeInterval())
 
 <template>
   <main>
-    <PhotoComponent :url="url" />
+    <div class="relative w-screen h-screen overflow-hidden">
+      <PhotoComponent :caption="caption" :url="url" />
+    </div>
   </main>
 </template>
